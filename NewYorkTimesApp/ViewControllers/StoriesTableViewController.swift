@@ -30,10 +30,7 @@ class StoriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if loadingStories {
             tableView.separatorColor = tableView.backgroundColor
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? ActivityTableViewCell else {
-                fatalError()
-            }
-            return cell
+            return tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath)
         } else {
             tableView.separatorColor = .separator
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "storyCell", for: indexPath) as? StoryTableViewCell else {
@@ -55,20 +52,19 @@ extension StoriesTableViewController {
 // MARK: - Private Methods
 extension StoriesTableViewController {
     private func fetchStories() {
-        guard let url = URL(string: ApiManager.shared) else { return }
+        guard let url = URL(string: ApiManager.shared.topArtStories) else { return }
         
-        NetworkManager.fetch(url: url, closure: { (data: Data) in
+        NetworkManager.shared.fetch(url: url, closure: { (data: Data) in
             do {
                 let response = try JSONDecoder().decode(ApiResponse.self, from: data)
 
                 guard let results = response.results else { return }
                 self.stories = results
-                self.loadingStories = false
 
                 DispatchQueue.main.async {
+                    self.loadingStories = false
                     self.tableView.reloadData()
                 }
-                
             } catch let error {
                 print(error.localizedDescription)
             }

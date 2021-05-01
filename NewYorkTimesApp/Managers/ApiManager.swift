@@ -14,5 +14,5 @@ class ApiManager {
     
     private init() {}
     
-    static var shared = ApiManager().topArtStories
+    static var shared = ApiManager()
 }

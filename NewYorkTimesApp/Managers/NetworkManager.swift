@@ -8,15 +8,17 @@
 import Foundation
 
 class NetworkManager {
+    static let shared = NetworkManager()
+    
     private init() {}
     
-    static func fetch(url: URL, closure: @escaping (_ data: Data) -> Void) {
+    func fetch(url: URL, closure: @escaping (_ data: Data) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
-                        
+
             closure(data)
             
         }.resume()
