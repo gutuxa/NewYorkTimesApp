@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,20 +13,21 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HW_2.10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ng-X1-4Y5">
-                                <rect key="frame" x="153" y="773" width="108" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <rect key="frame" x="168.66666666666666" y="779" width="90.999999999999972" height="73"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                                 <color key="textColor" systemColor="systemGray3Color"/>
                                 <color key="highlightedColor" systemColor="systemGray4Color"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="HAT-kw-GHz">
-                                <rect key="frame" x="47" y="426.5" width="320" height="43"/>
+                                <rect key="frame" x="32" y="433" width="364" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="Bxq-hz-uvK"/>
-                                    <constraint firstAttribute="height" constant="43" id="dOK-Ce-ZkN"/>
+                                    <constraint firstAttribute="height" constant="60" id="FAl-vw-wh6"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="UjA-8o-YRn"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="yZh-5m-k4z"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -34,10 +35,12 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="8ng-X1-4Y5" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="735" id="4FV-Ni-qfL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8ng-X1-4Y5" secondAttribute="bottom" constant="60" id="DoX-ib-SLe"/>
-                            <constraint firstItem="HAT-kw-GHz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="FHd-TD-8oa"/>
-                            <constraint firstItem="HAT-kw-GHz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="bVY-wV-LAf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8ng-X1-4Y5" secondAttribute="bottom" constant="40" id="DoX-ib-SLe"/>
                             <constraint firstItem="8ng-X1-4Y5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eTr-1f-G0d"/>
+                            <constraint firstItem="HAT-kw-GHz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="lL8-h1-dej"/>
+                            <constraint firstItem="HAT-kw-GHz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qQV-qH-OLo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HAT-kw-GHz" secondAttribute="trailing" constant="32" id="thW-p8-quV"/>
+                            <constraint firstItem="HAT-kw-GHz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zlH-YM-vJ4"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -47,7 +50,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="106.5" height="14"/>
+        <image name="logo" width="266.66665649414062" height="36"/>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

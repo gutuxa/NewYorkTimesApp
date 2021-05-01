@@ -8,6 +8,8 @@
 import UIKit
 
 class StoryTableViewCell: UITableViewCell {
+    
+    private let thumbnailWidth = 75
 
     @IBOutlet var sectionLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -21,9 +23,9 @@ class StoryTableViewCell: UITableViewCell {
         abstractLabel.text = story.abstract
         bylineLabel.text = story.byline
         
-        let thumbnails = Dictionary(grouping: story.multimedia, by: { $0.width })
+        let thumbnails = Dictionary(grouping: story.multimedia ?? [], by: { $0.width })
         
-        guard let thumbnail = thumbnails[75]?.first else { return }
+        guard let thumbnail = thumbnails[thumbnailWidth]?.first else { return }
         guard let url = URL(string: thumbnail.url ?? "") else { return }
         
         DispatchQueue.global().async {

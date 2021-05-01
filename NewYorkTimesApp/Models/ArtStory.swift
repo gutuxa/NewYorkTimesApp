@@ -15,7 +15,7 @@ struct ArtStory: Decodable {
     let abstract: String?
     let section: String?
     let byline: String?
-    let multimedia: [Media]
+    let multimedia: [Media]?
 }
 
 struct Media: Decodable {
