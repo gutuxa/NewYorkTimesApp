@@ -10,13 +10,13 @@
         <!--Art Stories-->
         <scene sceneID="wEG-jn-zZZ">
             <objects>
-                <tableViewController title="Art Stories" automaticallyAdjustsScrollViewInsets="NO" id="1Cu-Tb-5Tu" customClass="StoriesTableViewController" customModule="NetworkApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Art Stories" automaticallyAdjustsScrollViewInsets="NO" id="1Cu-Tb-5Tu" customClass="StoriesTableViewController" customModule="NewYorkTimesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JHt-YM-8RS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" rowHeight="128" id="ndm-pB-fZG" customClass="StoryTableViewCell" customModule="NetworkApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" rowHeight="128" id="ndm-pB-fZG" customClass="StoryTableViewCell" customModule="NewYorkTimesApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ndm-pB-fZG" id="Kcf-lJ-lcM">
@@ -82,6 +82,26 @@
                                     <outlet property="sectionLabel" destination="RvB-cg-3Fy" id="M5h-lh-EH6"/>
                                     <outlet property="thumbnailImage" destination="N1F-Oa-NZf" id="NpK-xz-BUY"/>
                                     <outlet property="titleLabel" destination="yfV-rS-aa1" id="hH7-sA-rSl"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" restorationIdentifier="acrivityCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="activityCell" id="v6T-uS-l5i" customClass="ActivityTableViewCell" customModule="NewYorkTimesApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="183.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="activityCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v6T-uS-l5i" id="095-YQ-PvO" customClass="ActivityTableViewCell" customModule="NewYorkTimesApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ozx-R9-62t">
+                                            <rect key="frame" x="197" y="12" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="ozx-R9-62t" id="zYb-Wl-vUV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

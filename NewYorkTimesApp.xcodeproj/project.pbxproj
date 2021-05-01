@@ -17,6 +17,7 @@
 		B394516A263D537D00A1AB03 /* StoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3945169263D537D00A1AB03 /* StoriesTableViewController.swift */; };
 		B3E2715C263D8B200056BBFD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2715B263D8B200056BBFD /* NetworkManager.swift */; };
 		B3E2715F263D92070056BBFD /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E2715E263D92070056BBFD /* ApiManager.swift */; };
+		B3EC4427263DB35A00D5600A /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC4426263DB35A00D5600A /* ActivityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B3945169263D537D00A1AB03 /* StoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewController.swift; sourceTree = "<group>"; };
 		B3E2715B263D8B200056BBFD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B3E2715E263D92070056BBFD /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		B3EC4426263DB35A00D5600A /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				B3945169263D537D00A1AB03 /* StoriesTableViewController.swift */,
 				B3945166263D536100A1AB03 /* StoryTableViewCell.swift */,
+				B3EC4426263DB35A00D5600A /* ActivityTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				B3E2715C263D8B200056BBFD /* NetworkManager.swift in Sources */,
 				B394513F263D3BC100A1AB03 /* SceneDelegate.swift in Sources */,
 				B3945162263D408100A1AB03 /* ArtStory.swift in Sources */,
+				B3EC4427263DB35A00D5600A /* ActivityTableViewCell.swift in Sources */,
 				B3945167263D536100A1AB03 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

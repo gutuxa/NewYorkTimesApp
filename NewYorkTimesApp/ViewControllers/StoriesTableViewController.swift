@@ -10,6 +10,7 @@ import UIKit
 class StoriesTableViewController: UITableViewController {
     
     private var stories: [ArtStory] = []
+    private var loadingStories = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,7 @@ class StoriesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        stories.count
+        loadingStories ? 1 : stories.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,11 +28,20 @@ class StoriesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "storyCell", for: indexPath) as? StoryTableViewCell else {
-            fatalError()
+        if loadingStories {
+            tableView.separatorColor = tableView.backgroundColor
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as? ActivityTableViewCell else {
+                fatalError()
+            }
+            return cell
+        } else {
+            tableView.separatorColor = .separator
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "storyCell", for: indexPath) as? StoryTableViewCell else {
+                fatalError()
+            }
+            cell.configure(with: stories[indexPath.section])
+            return cell
         }
-        cell.configure(with: stories[indexPath.section])
-        return cell
     }
 }
 
@@ -53,6 +63,7 @@ extension StoriesTableViewController {
 
                 guard let results = response.results else { return }
                 self.stories = results
+                self.loadingStories = false
 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
