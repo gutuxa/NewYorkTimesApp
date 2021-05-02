@@ -60,9 +60,7 @@ extension StoriesTableViewController {
                 switch result {
                 case .failure(let error):
                     switch error {
-                    case .errorResponse(message: let message),
-                         .badResponse(message: let message):
-                        self.showErrorAlert(message: message)
+                    case .badResponse(message: let message): self.showErrorAlert(message: message)
                     }
                 case .success(let data):
                     do {

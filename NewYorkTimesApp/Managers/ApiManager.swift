@@ -12,7 +12,7 @@ class ApiManager {
         "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=\(key)"
     }
     
-    static var shared = ApiManager()
+    static let shared = ApiManager()
     
     private init() {}
 }

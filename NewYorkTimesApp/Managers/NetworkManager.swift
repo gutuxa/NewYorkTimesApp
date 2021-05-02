@@ -8,7 +8,6 @@
 import Foundation
 
 enum NetworkError: Error {
-    case errorResponse(message: String)
     case badResponse(message: String)
 }
 
@@ -22,7 +21,7 @@ class NetworkManager {
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                handler(.failure(.errorResponse(message: error.localizedDescription)))
+                handler(.failure(.badResponse(message: error.localizedDescription)))
                 return
             }
             
