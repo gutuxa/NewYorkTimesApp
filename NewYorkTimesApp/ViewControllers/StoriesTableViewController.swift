@@ -52,22 +52,47 @@ extension StoriesTableViewController {
 // MARK: - Private Methods
 extension StoriesTableViewController {
     private func fetchStories() {
-        guard let url = URL(string: ApiManager.shared.topArtStories) else { return }
-        
-        NetworkManager.shared.fetch(url: url, closure: { (data: Data) in
-            do {
-                let response = try JSONDecoder().decode(ApiResponse.self, from: data)
-
-                guard let results = response.results else { return }
-                self.stories = results
-
+        NetworkManager.shared.fetch(
+            url: ApiManager.shared.topArtStories,
+            handler: { result in
+                self.loadingStories = false
+                
+                switch result {
+                case .failure(let error):
+                    switch error {
+                    case .errorResponse(message: let message),
+                         .badResponse(message: let message):
+                        self.showErrorAlert(message: message)
+                    }
+                case .success(let data):
+                    do {
+                        let response = try JSONDecoder().decode(ApiResponse.self, from: data)
+                        guard let results = response.results else { return }
+                        self.stories = results
+                    } catch let error {
+                        self.showErrorAlert(message: error.localizedDescription)
+                    }
+                }
+                
                 DispatchQueue.main.async {
-                    self.loadingStories = false
                     self.tableView.reloadData()
                 }
-            } catch let error {
-                print(error.localizedDescription)
             }
-        })
+        )
+    }
+    
+    private func showErrorAlert(message: String?) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: "Error",
+                message: message ?? "No error description",
+                preferredStyle: .alert
+            )
+
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
     }
 }
