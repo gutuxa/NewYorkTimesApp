@@ -10,17 +10,17 @@ import UIKit
 class StoriesTableViewController: UITableViewController {
     
     private var stories: [ArtStory] = []
-    private var loadingStories = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset.top = 24
-        fetchStories()
+        let activityIndicatorView = setupActivityIndicator(in: tableView)
+        fetchStories(with: activityIndicatorView)
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        loadingStories ? 1 : stories.count
+        stories.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,17 +28,11 @@ class StoriesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if loadingStories {
-            tableView.separatorColor = tableView.backgroundColor
-            return tableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath)
-        } else {
-            tableView.separatorColor = .separator
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "storyCell", for: indexPath) as? StoryTableViewCell else {
-                fatalError()
-            }
-            cell.configure(with: stories[indexPath.section])
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "storyCell", for: indexPath) as? StoryTableViewCell else {
+            fatalError()
         }
+        cell.configure(with: stories[indexPath.section])
+        return cell
     }
 }
 
@@ -51,16 +45,29 @@ extension StoriesTableViewController {
 
 // MARK: - Private Methods
 extension StoriesTableViewController {
-    private func fetchStories() {
+    private func setupActivityIndicator(in view: UIView) -> UIActivityIndicatorView {
+        let activitiIndicatorView = UIActivityIndicatorView(style: .large)
+        activitiIndicatorView.color = .gray
+        activitiIndicatorView.center = CGPoint(
+            x: view.frame.midX,
+            y: view.frame.midY - (navigationController?.navigationBar.frame.maxY ?? 0)
+        )
+        activitiIndicatorView.startAnimating()
+        activitiIndicatorView.hidesWhenStopped = true
+        view.addSubview(activitiIndicatorView)
+        
+        return activitiIndicatorView
+    }
+    
+    private func fetchStories(with activityIndicatorView: UIActivityIndicatorView) {
         NetworkManager.shared.fetch(
             url: ApiManager.shared.topArtStories,
             handler: { result in
-                self.loadingStories = false
-                
                 switch result {
                 case .failure(let error):
                     switch error {
-                    case .badResponse(message: let message): self.showErrorAlert(message: message)
+                    case .badResponse(message: let message):
+                        self.showErrorAlert(message: message)
                     }
                 case .success(let data):
                     do {
@@ -73,6 +80,7 @@ extension StoriesTableViewController {
                 }
                 
                 DispatchQueue.main.async {
+                    activityIndicatorView.stopAnimating()
                     self.tableView.reloadData()
                 }
             }
