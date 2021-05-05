@@ -9,13 +9,21 @@ import UIKit
 
 class StoriesTableViewController: UITableViewController {
     
+    private let activityIndicatorView = UIActivityIndicatorView()
     private var stories: [ArtStory] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset.top = 24
-        let activityIndicatorView = setupActivityIndicator(in: tableView)
-        fetchStories(with: activityIndicatorView)
+        setupActivityIndicator(in: tableView)
+        fetchStories()
+    }
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let storyVC = segue.destination as? StoryViewController else { return }
+        storyVC.story = sender as? ArtStory
     }
 
     // MARK: - Table view data source
@@ -41,46 +49,40 @@ extension StoriesTableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         .leastNormalMagnitude
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let story = stories[indexPath.section]
+        performSegue(withIdentifier: "showStory", sender: story)
+    }
 }
 
 // MARK: - Private Methods
 extension StoriesTableViewController {
-    private func setupActivityIndicator(in view: UIView) -> UIActivityIndicatorView {
-        let activitiIndicatorView = UIActivityIndicatorView(style: .large)
-        activitiIndicatorView.color = .gray
-        activitiIndicatorView.center = CGPoint(
+    private func setupActivityIndicator(in view: UIView) {
+        activityIndicatorView.style = .large
+        activityIndicatorView.color = .gray
+        activityIndicatorView.center = CGPoint(
             x: view.frame.midX,
             y: view.frame.midY - (navigationController?.navigationBar.frame.maxY ?? 0)
         )
-        activitiIndicatorView.startAnimating()
-        activitiIndicatorView.hidesWhenStopped = true
-        view.addSubview(activitiIndicatorView)
-        
-        return activitiIndicatorView
+        activityIndicatorView.startAnimating()
+        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
     }
     
-    private func fetchStories(with activityIndicatorView: UIActivityIndicatorView) {
+    private func fetchStories() {
         NetworkManager.shared.fetch(
             url: ApiManager.shared.topArtStories,
             handler: { result in
                 switch result {
+                case .success(let value):
+                    self.stories = ArtStory.getStories(from: value)
                 case .failure(let error):
-                    switch error {
-                    case .badResponse(message: let message):
-                        self.showErrorAlert(message: message)
-                    }
-                case .success(let data):
-                    do {
-                        let response = try JSONDecoder().decode(ApiResponse.self, from: data)
-                        guard let results = response.results else { return }
-                        self.stories = results
-                    } catch let error {
-                        self.showErrorAlert(message: error.localizedDescription)
-                    }
+                    self.showErrorAlert(message: error.localizedDescription)
                 }
                 
                 DispatchQueue.main.async {
-                    activityIndicatorView.stopAnimating()
+                    self.activityIndicatorView.stopAnimating()
                     self.tableView.reloadData()
                 }
             }

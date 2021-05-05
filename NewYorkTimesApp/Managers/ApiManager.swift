@@ -6,7 +6,7 @@
 //
 
 class ApiManager {
-    private let key = "I7dU3n8LI1OKAUDRhAh0MSV2hQqifpom"
+    private let key = "hEhLoK1qBW30pi8oE9CKvzD0BNvV2rIL"
     
     var topArtStories: String {
         "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=\(key)"

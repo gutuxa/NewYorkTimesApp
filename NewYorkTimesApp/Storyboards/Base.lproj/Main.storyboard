@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +12,7 @@
         <scene sceneID="wEG-jn-zZZ">
             <objects>
                 <tableViewController title="Art Stories" automaticallyAdjustsScrollViewInsets="NO" id="1Cu-Tb-5Tu" customClass="StoriesTableViewController" customModule="NewYorkTimesApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JHt-YM-8RS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JHt-YM-8RS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -90,11 +91,80 @@
                             <outlet property="delegate" destination="1Cu-Tb-5Tu" id="N4K-8O-mah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top Art Stories" id="6Ha-I0-OBi"/>
+                    <navigationItem key="navigationItem" title="Arts" id="6Ha-I0-OBi"/>
+                    <connections>
+                        <segue destination="YKN-HZ-Mxc" kind="show" identifier="showStory" id="TcA-y7-eha"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFi-Gg-U3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="318.84057971014494" y="6.6964285714285712"/>
+        </scene>
+        <!--Story View Controller-->
+        <scene sceneID="Xup-2u-LDm">
+            <objects>
+                <viewController id="YKN-HZ-Mxc" customClass="StoryViewController" customModule="NewYorkTimesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TcE-ly-PPC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcr-MZ-7xo">
+                                <rect key="frame" x="16" y="112" width="382" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3E-By-dte">
+                                <rect key="frame" x="16" y="134.5" width="382" height="35.5"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gae-Jf-ffW">
+                                <rect key="frame" x="0.0" y="186" width="414" height="248.5"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gae-Jf-ffW" secondAttribute="height" multiplier="2:1.2" id="x7g-vg-oPo"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QWe-2W-Ngo">
+                                <rect key="frame" x="16" y="450.5" width="382" height="387.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XxM-RV-fpC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gae-Jf-ffW" firstAttribute="top" secondItem="M3E-By-dte" secondAttribute="bottom" constant="16" id="1pT-XH-pIm"/>
+                            <constraint firstItem="XxM-RV-fpC" firstAttribute="trailing" secondItem="QWe-2W-Ngo" secondAttribute="trailing" constant="16" id="4UG-bM-QKk"/>
+                            <constraint firstItem="XxM-RV-fpC" firstAttribute="trailing" secondItem="gae-Jf-ffW" secondAttribute="trailing" id="Bsa-WN-5pY"/>
+                            <constraint firstItem="Pcr-MZ-7xo" firstAttribute="leading" secondItem="XxM-RV-fpC" secondAttribute="leading" constant="16" id="FV8-NX-loD"/>
+                            <constraint firstItem="Pcr-MZ-7xo" firstAttribute="top" secondItem="XxM-RV-fpC" secondAttribute="top" constant="24" id="Fo2-Ce-q0H"/>
+                            <constraint firstItem="XxM-RV-fpC" firstAttribute="bottom" secondItem="QWe-2W-Ngo" secondAttribute="bottom" constant="24" id="JOe-Ww-kGK"/>
+                            <constraint firstItem="gae-Jf-ffW" firstAttribute="leading" secondItem="XxM-RV-fpC" secondAttribute="leading" id="JOg-Ra-95j"/>
+                            <constraint firstItem="M3E-By-dte" firstAttribute="leading" secondItem="XxM-RV-fpC" secondAttribute="leading" constant="16" id="NnS-4m-QfQ"/>
+                            <constraint firstItem="QWe-2W-Ngo" firstAttribute="leading" secondItem="XxM-RV-fpC" secondAttribute="leading" constant="16" id="Sm0-rb-px7"/>
+                            <constraint firstItem="M3E-By-dte" firstAttribute="top" secondItem="Pcr-MZ-7xo" secondAttribute="bottom" constant="8" id="i8W-Le-kEX"/>
+                            <constraint firstItem="XxM-RV-fpC" firstAttribute="trailing" secondItem="M3E-By-dte" secondAttribute="trailing" constant="16" id="lrY-eH-s5o"/>
+                            <constraint firstItem="QWe-2W-Ngo" firstAttribute="top" secondItem="gae-Jf-ffW" secondAttribute="bottom" constant="16" id="pNg-TI-qmW"/>
+                            <constraint firstItem="XxM-RV-fpC" firstAttribute="trailing" secondItem="Pcr-MZ-7xo" secondAttribute="trailing" constant="16" id="woN-6U-4TY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="MwJ-0G-PKY"/>
+                    <connections>
+                        <outlet property="abstractTextView" destination="QWe-2W-Ngo" id="Tp9-Oi-vxQ"/>
+                        <outlet property="imageView" destination="gae-Jf-ffW" id="g0q-lv-hEo"/>
+                        <outlet property="sectionLabel" destination="Pcr-MZ-7xo" id="yER-dg-X1f"/>
+                        <outlet property="titleLabel" destination="M3E-By-dte" id="qYf-F7-8kS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WbY-QS-kEq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095.6521739130435" y="6.6964285714285712"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b59-n7-xu8">
@@ -114,8 +184,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
