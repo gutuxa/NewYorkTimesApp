@@ -15,7 +15,7 @@ class StoryTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var abstractLabel: UILabel!
     @IBOutlet var bylineLabel: UILabel!
-    @IBOutlet var thumbnailImage: UIImageView!
+    @IBOutlet var thumbnailImage: StoryImageView!
     
     func configure (with story: ArtStory) {
         sectionLabel.text = story.section?.uppercased()
@@ -23,17 +23,9 @@ class StoryTableViewCell: UITableViewCell {
         abstractLabel.text = story.abstract
         bylineLabel.text = story.byline
         
-        let thumbnails = Dictionary(grouping: story.multimedia ?? [], by: { $0.width })
+        let thumbnails = Dictionary(grouping: story.multimedia, by: { $0.width })
+        guard let thumbnailUrl = thumbnails[thumbnailWidth]?.first else { return }
         
-        guard let thumbnail = thumbnails[thumbnailWidth]?.first else { return }
-        guard let url = URL(string: thumbnail.url ?? "") else { return }
-        
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: url) else { return }
-            
-            DispatchQueue.main.async {
-                self.thumbnailImage.image = UIImage(data: imageData)
-            }
-        }
+        thumbnailImage.fetchImage(from: thumbnailUrl.url ?? "")
     }
 }

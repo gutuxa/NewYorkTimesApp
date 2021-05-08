@@ -10,7 +10,7 @@ struct ArtStory: Decodable {
     let abstract: String?
     let section: String?
     let byline: String?
-    let multimedia: [Media]?
+    let multimedia: [Media]
     
     init(data: [String: Any]) {
         title = data["title"] as? String

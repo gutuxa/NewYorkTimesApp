@@ -20,7 +20,6 @@ class StoriesTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let storyVC = segue.destination as? StoryViewController else { return }
         storyVC.story = sender as? ArtStory

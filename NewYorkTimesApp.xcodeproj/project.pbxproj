@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B1B192B8F445764024A317D4 /* Pods_NewYorkTimesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE3E6A370E288A59DA78F15 /* Pods_NewYorkTimesApp.framework */; };
 		B350CC282641B3DE0062D680 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B350CC272641B3DE0062D680 /* StoryViewController.swift */; };
+		B35B5FAD2646B258006541BD /* StoryImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B5FAC2646B258006541BD /* StoryImageView.swift */; };
+		B35B5FB12646BB4C006541BD /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B5FB02646BB4C006541BD /* ImageManager.swift */; };
 		B394513D263D3BC100A1AB03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394513C263D3BC100A1AB03 /* AppDelegate.swift */; };
 		B394513F263D3BC100A1AB03 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B394513E263D3BC100A1AB03 /* SceneDelegate.swift */; };
 		B3945144263D3BC100A1AB03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3945142263D3BC100A1AB03 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		84ED641316376E60C7663EB5 /* Pods-NewYorkTimesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewYorkTimesApp.release.xcconfig"; path = "Target Support Files/Pods-NewYorkTimesApp/Pods-NewYorkTimesApp.release.xcconfig"; sourceTree = "<group>"; };
 		8DE3E6A370E288A59DA78F15 /* Pods_NewYorkTimesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewYorkTimesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B350CC272641B3DE0062D680 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		B35B5FAC2646B258006541BD /* StoryImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryImageView.swift; sourceTree = "<group>"; };
+		B35B5FB02646BB4C006541BD /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		B3945139263D3BC100A1AB03 /* NewYorkTimesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewYorkTimesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B394513C263D3BC100A1AB03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B394513E263D3BC100A1AB03 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B35B5FAB2646B22A006541BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3945166263D536100A1AB03 /* StoryTableViewCell.swift */,
+				B35B5FAC2646B258006541BD /* StoryImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B3945130263D3BC100A1AB03 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,7 @@
 				B3945159263D3C2400A1AB03 /* Models */,
 				B3945152263D3BDE00A1AB03 /* Supporting */,
 				B3945156263D3C0300A1AB03 /* ViewControllers */,
+				B35B5FAB2646B22A006541BD /* Views */,
 				B3945154263D3BF800A1AB03 /* Storyboards */,
 				B3945158263D3C0F00A1AB03 /* Resources */,
 			);
@@ -114,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				B3945169263D537D00A1AB03 /* StoriesTableViewController.swift */,
-				B3945166263D536100A1AB03 /* StoryTableViewCell.swift */,
 				B350CC272641B3DE0062D680 /* StoryViewController.swift */,
 			);
 			path = ViewControllers;
@@ -141,6 +154,7 @@
 			children = (
 				B3E2715B263D8B200056BBFD /* NetworkManager.swift */,
 				B3E2715E263D92070056BBFD /* ApiManager.swift */,
+				B35B5FB02646BB4C006541BD /* ImageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -269,7 +283,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3E2715F263D92070056BBFD /* ApiManager.swift in Sources */,
+				B35B5FB12646BB4C006541BD /* ImageManager.swift in Sources */,
 				B394516A263D537D00A1AB03 /* StoriesTableViewController.swift in Sources */,
+				B35B5FAD2646B258006541BD /* StoryImageView.swift in Sources */,
 				B394513D263D3BC100A1AB03 /* AppDelegate.swift in Sources */,
 				B3E2715C263D8B200056BBFD /* NetworkManager.swift in Sources */,
 				B350CC282641B3DE0062D680 /* StoryViewController.swift in Sources */,
